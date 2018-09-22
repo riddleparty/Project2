@@ -77,12 +77,6 @@ position: fixed;
 
  }
 
-.navbar-form {
-  z-index: -1;
-  position: relative;
-  float: right;
-}
-
  /* sets size of main search input form */
  .form-control.form-control-lg.form-control-borderless {
      width: 300px;
