@@ -71,7 +71,8 @@ position: fixed;
 
  /* sets size of main search input form */
  .form-control.form-control-lg.form-control-borderless {
-     width: 500px;
+     width: 770px;
+     margin: auto;
  }
 
  input {
