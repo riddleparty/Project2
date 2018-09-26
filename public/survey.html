@@ -160,12 +160,12 @@
             };
 
             console.log(newUserData);
-            
+
             $.post("/api/hiker", newUserData, function (data) {
 
-                alert(data);
+                //alert(data);
 
-                //$("#matchName").text(data.name);
+                $("#matchName").text(data.name);
                 //$("#matchPicture").attr("src", data.photo);
 
                 // Show best match on pop up modal
