@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="shortcut icon" href="code-break-114-246266.png">
     <link rel="stylesheet" href="styles/styles.css">
     <link href="https://fonts.googleapis.com/css?family=Merienda" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
@@ -91,7 +90,7 @@
         <form>
             <h4 class="row"><b>Hiking Trails</b></h4>
 
-            <label for="questions" class="row">Which hiking trail do you want to hike?
+            <label for="trails" class="row">Which hiking trail do you want to hike?
             </label>
                 <div class="form-group row">
                     <div class="col-xs-12">
@@ -145,56 +144,67 @@
 
 <script>
 
-    // Onclick Function to capture the user inputs
-    // $("#submit").on("click", function(event) {
-    //     event.preventDefault();
+    //Onclick Function to capture the user inputs
+    $("#submit").on("click", function(event) {
+        event.preventDefault();
 
-    // // Need to Validate the Form 
-    // function formValidation() {
-    //     var formValid = true;
-    //     $(".form-control").each(function() {
-    //       if ($(this).val() === "") {
-    //         formValid = false;
-    //       }
-    //     });
+        //Once valdiated we have to createa an object for new User data
+        if (formValidation()) {
 
-    //     $(".select-option").each(function() {
-    //         if ($(this).val() === "") {
-    //         formValid = false;
-    //       }
-    //     });
-    //     return formValid;
-    //   }
-    // //Once valdiated we have to createa an object for new User data
-    //   if (formValidation()) {
-    //       var newUserData = {
-    //         name: $("#name").val(),
-    //         photo: $("#photo").val(),
-    //         scores: [
-    //         $("#question1").val(),
-    //         $("#question12").val(),
-    //         $("#question13").val(),
-    //         $("#question14").val(),
-    //         $("#question15").val(),
-    //         $("#question16").val(),
-    //         $("#question17").val(),
-    //         $("#question18").val(),
-    //         $("#question19").val(),
-    //         $("#question110").val()
-    //       ]
-    //       };
 
-    // // Need to Post data to friends API
-    //     var currentURL = window.location.origin;
-    //         $.post("/api/friends", newUserData, function (data) {
-    //             $("#matchName").text(data.name);
-    //             $("#matchPicture").attr("src", data.photo);
+            var newUserData = {
+                name: $("#name").val(),
+                age: $("#age").val(),
+                gender: $("#gender").val(),
+                trails: 'a trail' //$("#trails option:selected").val()
+            };
 
-    //             // Show best match on pop up modal
-    //             $("#resultsModal").modal("toggle");
-    //         });
-    //     };
-    // });
+            console.log(newUserData);
+            
+            $.post("/api/hiker", newUserData, function (data) {
+
+                alert(data);
+
+<<<<<<< HEAD
+</script>
+    
+    
+    
+    
+=======
+                //$("#matchName").text(data.name);
+                //$("#matchPicture").attr("src", data.photo);
+
+                // Show best match on pop up modal
+                //$("#resultsModal").modal("toggle");
+
+                
+            });
+
+        } // end of if valid
+    }); // end of button click
+>>>>>>> 1a0c049d74fe60ee1e6292ae88f5acde58660ce7
+
+     // Need to Validate the Form 
+     function formValidation() {
+
+        return true;
+
+        var formValid = true;
+        $(".form-control").each(function() {
+          if ($(this).val() === "") {
+            formValid = false;
+          }
+        });
+
+        $(".select-option").each(function() {
+            if ($(this).val() === "") {
+            formValid = false;
+          }
+        });
+        
+        return formValid;
+      }
 
 
 
@@ -202,12 +212,5 @@
 
 
 </script>
-    
-    
-    
-    
-
-
-
 </body>
 </html>
