@@ -1,159 +1,148 @@
-$(function() {
-    $('#calendar').fullCalendar({
-      googleCalendarApiKey: 800855705321-k5dgbfg1df3pt12vlq4mj1h6suagd92p.apps.googleusercontent.com,
-      events: {
-        googleCalendarId: 'lcokoroike@gmail.com',
-        className: 'Take-A-Hike',//name of project
-      }
-    });
-  });
+var calendar = function () {
+    var wrap, label,
+        months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    function init(newWrap) {
+        wrap = $(newWrap || "#cal");
+        label = wrap.find("#label");
+        wrap.find("#prev").bind("click.calendar", function () { switchMonth(false); });
+        wrap.find("#next").bind("click.calendar", function () { switchMonth(true); });
+        label.bind("click", function () { switchMonth(null, new Date().getMonth(), new Date().getFullYear()); });
+        label.click();
+    }
+
+    function switchMonth(next, month, year) {
+        var curr = label.text().trim().split(" "), calendar, tempYear = parseInt(curr[1], 10);
+        month = month || ((next) ? ((curr[0] === "December") ? 0 : months.indexOf(curr[0]) + 1) : ((curr[0] === "January") ? 11 : months.indexOf(curr[0]) - 1));
+        year = year || ((next && month === 0) ? tempYear + 1 : (!next && month === 11) ? tempYear - 1 : tempYear);
+    }
+
+    function createCal(year, month) {
+    createCal.cache = {};
+    return {
+        init: init,
+        switchMonth: switchMonth,
+        createCal: createCal
+    };
+};
+
+if (!month) {
+    if (next) {
+        if (curr[0] === "December") {
+            month = 0;
+        } else {
+            month = months.indexOf(curr[0]) + 1;
+        }
+    } else {
+        if (curr[0] === "January") {
+            month = 11;
+        } else {
+            month = months.indexOf(curr[0]) - 1;
+        }
+    }
+}
+
+
+if (!year) {
+    if (next && month === 0) {
+        year = tempYear + 1;
+    } else if (!next && month === 11) {
+        year = tempYear - 1;
+    } else {
+        year = tempYear;
+    }
+}
+
+
+calendar = createCal(year, month);
+$("#cal-frame", wrap)
+    .find(".curr")
+    .removeClass("curr")
+    .addClass("temp")
+    .end()
+    .prepend(calendar.calendar())
+    .find(".temp")
+    .fadeOut("slow", function () { $(this).remove(); });
+
+$('#label').text(calendar.label);
+
+
+{
+    calendar: function () { /* returns a jquery object of the calendar */ }
+    label: "Month Year"
+}
 
 
 
+var day = 1, i, j, haveDays = true,
+    startDay = new Date(year, month, day).getDay(),
+    daysInMonths = [31, (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
+    calendar = [];
 
 
 
+if (createCal.cache[year]) {
+    if (createCal.cache[year][month]) {
+        return createCal.cache[year][month];
+    }
+} else {
+    createCal.cache[year] = {};
+}
 
 
 
+i = 0;
+while (haveDays) {
+    calendar[i] = [];
+    for (j = 0; j < 7; j++) {
+        if (i === 0) {
+            if (j === startDay) {
+                calendar[i][j] = day++;
+                startDay++;
+            }
+        } else if (day <= daysInMonths[month]) {
+            calendar[i][j] = day++;
+        } else {
+            calendar[i][j] = "";
+            haveDays = false;
+        }
+        if (day > daysInMonths[month]) {
+            haveDays = false;
+        }
+    }
+    i++;
+}
 
 
 
+if (calendar[5]) {
+    for (i = 0; i < calendar[5].length; i++) {
+        if (calendar[5][i] !== "") {
+            calendar[4][i] = "<span>" + calendar[4][i] + "</span><span>" + calendar[5][i] + "</span>";
+        }
+    }
+    calendar = calendar.slice(0, 5);
+}
+
+
+for (i = 0; i < calendar.length; i++) {
+    calendar[i] = "<tr><td>" + calendar[i].join("</td><td>") + "</td></tr>";
+}
+calendar = $("<table>" + calendar.join("") + "</table>").addClass("curr");
+
+$("td:empty", calendar).addClass("nil");
+if (month === new Date().getMonth()) {
+    $('td', calendar).filter(function () { return $(this).text() === new Date().getDate().toString(); }).addClass("today");
+}
+createCal.cache[year][month] = { calendar: function () { return calendar.clone() }, label: months[month] + " " + year };
+
+return createCal.cache[year][month];
 
 
 
-// $(function() {
+var cal = CALENDAR();
 
-//     // initialize the external events
-//     // -----------------------------------------------------------------
-  
-//     $('#external-events .fc-event').each(function() {
-  
-//       // store data so the calendar knows to render an event upon drop
-//       $(this).data('event', {
-//         title: $.trim($(this).text()), // use the element's text as the event title
-//         stick: true // maintain when user navigates (see docs on the renderEvent method)
-//       });
-  
-//       // make the event draggable using jQuery UI
-//       $(this).draggable({
-//         zIndex: 999,
-//         revert: true,      // will cause the event to go back to its
-//         revertDuration: 0  //  original position after the drag
-//       });
-  
-//     });
-  
-//     // initialize the calendar
-//     // -----------------------------------------------------------------
-  
-//     $('#calendar').fullCalendar({
-//       header: {
-//         left: 'prev,next today',
-//         center: 'title',
-//         right: 'month,agendaWeek,agendaDay'
-//       },
-//       editable: true,
-//       droppable: true, // this allows things to be dropped onto the calendar
-//       drop: function() {
-//         // is the "remove after drop" checkbox checked?
-//         if ($('#drop-remove').is(':checked')) {
-//           // if so, remove the element from the "Draggable Events" list
-//           $(this).remove();
-//         }
-//       }
-//     });
-  
-//   });
+cal.init();
 
-// const fs = require('fs');
-// const readline = require('readline');
-// const {google} = require('googleapis');
 
-// // If modifying these scopes, delete token.json.
-// const SCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
-// const TOKEN_PATH = 'token.json';
 
-// // Load client secrets from a local file.
-// fs.readFile('credentials.json', (err, content) => {
-//   if (err) return console.log('Error loading client secret file:', err);
-//   // Authorize a client with credentials, then call the Google Calendar API.
-//   authorize(JSON.parse(content), listEvents);
-// });
-
-// /**
-//  * Create an OAuth2 client with the given credentials, and then execute the
-//  * given callback function.
-//  * @param {Object} credentials The authorization client credentials.
-//  * @param {function} callback The callback to call with the authorized client.
-//  */
-// function authorize(credentials, callback) {
-//   const {client_secret, client_id, redirect_uris} = credentials.installed;
-//   const oAuth2Client = new google.auth.OAuth2(
-//       client_id, client_secret, redirect_uris[0]);
-
-//   // Check if we have previously stored a token.
-//   fs.readFile(TOKEN_PATH, (err, token) => {
-//     if (err) return getAccessToken(oAuth2Client, callback);
-//     oAuth2Client.setCredentials(JSON.parse(token));
-//     callback(oAuth2Client);
-//   });
-// }
-
-// /**
-//  * Get and store new token after prompting for user authorization, and then
-//  * execute the given callback with the authorized OAuth2 client.
-//  * @param {google.auth.OAuth2} oAuth2Client The OAuth2 client to get token for.
-//  * @param {getEventsCallback} callback The callback for the authorized client.
-//  */
-// function getAccessToken(oAuth2Client, callback) {
-//   const authUrl = oAuth2Client.generateAuthUrl({
-//     access_type: 'offline',
-//     scope: SCOPES,
-//   });
-//   console.log('Authorize this app by visiting this url:', authUrl);
-//   const rl = readline.createInterface({
-//     input: process.stdin,
-//     output: process.stdout,
-//   });
-//   rl.question('Enter the code from that page here: ', (code) => {
-//     rl.close();
-//     oAuth2Client.getToken(code, (err, token) => {
-//       if (err) return console.error('Error retrieving access token', err);
-//       oAuth2Client.setCredentials(token);
-//       // Store the token to disk for later program executions
-//       fs.writeFile(TOKEN_PATH, JSON.stringify(token), (err) => {
-//         if (err) console.error(err);
-//         console.log('Token stored to', TOKEN_PATH);
-//       });
-//       callback(oAuth2Client);
-//     });
-//   });
-// }
-
-// /**
-//  * Lists the next 10 events on the user's primary calendar.
-//  * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
-//  */
-// function listEvents(auth) {
-//   const calendar = google.calendar({version: 'v3', auth});
-//   calendar.events.list({
-//     calendarId: 'primary',
-//     timeMin: (new Date()).toISOString(),
-//     maxResults: 10,
-//     singleEvents: true,
-//     orderBy: 'startTime',
-//   }, (err, res) => {
-//     if (err) return console.log('The API returned an error: ' + err);
-//     const events = res.data.items;
-//     if (events.length) {
-//       console.log('Upcoming 10 events:');
-//       events.map((event, i) => {
-//         const start = event.start.dateTime || event.start.date;
-//         console.log(`${start} - ${event.summary}`);
-//       });
-//     } else {
-//       console.log('No upcoming events found.');
-//     }
-//   });
-// }
