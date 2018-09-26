@@ -1,0 +1,8 @@
+
+body {
+    /* background-color: beige; */
+    margin: auto;
+    background-image: url("../images/foggy_trees.jpg");
+    background-attachment: fixed;
+    font-family: 'Merienda', cursive;
+}

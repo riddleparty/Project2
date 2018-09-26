@@ -73,14 +73,9 @@ position: fixed;
 
  .navbar {
    z-index: 1;
- }
+   display:inline-block;
 
-.navbar-form {
-  padding-bottom: 20px;
-  z-index: -1;
-  position: relative;
-  float: right;
-}
+ }
 
  /* sets size of main search input form */
  .form-control.form-control-lg.form-control-borderless {
