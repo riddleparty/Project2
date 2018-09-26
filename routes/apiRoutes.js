@@ -14,15 +14,24 @@ module.exports = function(app) {
   // Create a new person
   app.post("/api/hiker", function(req, res) {
 
+    var bestMatch = {
+      name: "",
+      age: "",
+      gender: "",
+      trails: ""
+  };
+
     console.log(req.body);
 
     db.Hiker.create(req.body).then(function(newHiker) {
       db.Hiker.findOne({ where: {
         trails: req.body.trails
-      }}).then(function(friendRow) {
-        res.json(friendRow);
+      }}).then(function(bestMatch) {
+        res.json(bestMatch);
       }); // get hiker
     }); // create hiker
+
+    
 
   }); // function
 

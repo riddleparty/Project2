@@ -90,18 +90,18 @@
         <form>
             <h4 class="row"><b>Hiking Trails</b></h4>
 
-            <label for="trails" class="row">Which hiking trail do you want to hike?
+            <label for="questions" class="row">Please select a hiking trail and we will find you a friend that would like to go with you on this safe trip!
             </label>
                 <div class="form-group row">
                     <div class="col-xs-12">
-                        <select class="select-option" id="question1">
+                        <select class="select-option" id="trailselected">
                             <option selected>Select an Option</option>
-                            <option value="1">Bayview Trailhead</option>
-                            <option value="2">Cascade Falls</option>
-                            <option value="3">Eagle Rock</option>
-                            <option value="4">Tahoe Rim Trail</option>
-                            <option value="5">Tallac Trailhead</option>
-                            <option value="5">Page Meadows</option>
+                            <option value="Bayview Trailhead">Bayview Trailhead</option>
+                            <option value="Cascade Falls">Cascade Falls</option>
+                            <option value="Eagle Rock">Eagle Rock</option>
+                            <option value="Tahoe Rim Trail">Tahoe Rim Trail</option>
+                            <option value="Tallac Trailhead">Tallac Trailhead</option>
+                            <option value="Page Meadows">Page Meadows</option>
                         </select>
                     </div>
                 </div>
@@ -125,7 +125,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h3 class="modal-title">Best Match</h3>
+                            <h3 class="modal-title">This person would like to Hike the same Trail as You! Let's shoot them a message!</h3>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -133,7 +133,7 @@
                         </div>
                         <div class="modal-body">
                             <h3 id="matchName"></h3>
-                            <img id="matchPicture" src="" alt="">
+                            <img id="matchTrail" src="" alt="">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -156,34 +156,43 @@
                 name: $("#name").val(),
                 age: $("#age").val(),
                 gender: $("#gender").val(),
-                trails: 'a trail' //$("#trails option:selected").val()
+                trails: $("#trailselected option:selected").val()
             };
 
             console.log(newUserData);
+
 
             $.post("/api/hiker", newUserData, function (data) {
 
                 //alert(data);
 
                 $("#matchName").text(data.name);
-                //$("#matchPicture").attr("src", data.photo);
-
+                $("matchTrail").text(data.trailselected);
+                
                 // Show best match on pop up modal
-                //$("#resultsModal").modal("toggle");
+                $("#resultsModal").modal("toggle");
+
 
                 
             });
 
         } // end of if valid
+        
+        
+
     }); // end of button click
+
+    
+
+    
+
+    
 
      // Need to Validate the Form 
      function formValidation() {
 
-        return true;
-
         var formValid = true;
-        $(".form-control").each(function() {
+        $(".form-group row").each(function() {
           if ($(this).val() === "") {
             formValid = false;
           }

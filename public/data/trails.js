@@ -1,62 +1,64 @@
+
+
 var trails = [
 
     {
-        id: 1,
-        name:"Bayview Trailhead",
+        name: Jon,
+        trails:"Bayview Trailhead",
         location:"Sacramento"
     },
 
     {
-        id: 2,
-        name:"Cascade Falls",
+        name: Elaine,
+        trails:"Cascade Falls",
         location:"Tahoe"
     },
 
     {
-        id: 3,
-        name:"Eagle Rock",
+        name: Mike,
+        trails:"Eagle Rock",
         location:"Auburn"
     },
 
     {
-        id: 4,
-        name:"Tahoe Rim Trail",
+        name: Ron,
+        trails:"Tahoe Rim Trail",
         location:"Tahoe"
     },
 
     {
-        id: 5,
-        name:"Mt. Tallac Trail",
+        name: Tim,
+        trails:"Mt. Tallac Trail",
         location:"South Lake Tahoe"
     },
 
     {
-        id: 6,
-        name:"Paige Meadows",
+        name: Tina,
+        trails:"Page Meadows",
         location:"Folsom"
     },
 
     {
-        id: 7,
-        name:"Yosemite Trail",
+        name: Page,
+        trails:"Yosemite Trail",
         location:"Yosemite"
     },
 
     {
-        id: 8,
-        name:"Red Head Trail",
+        name: Kaylee,
+        trals:"Red Head Trail",
         location:"Colorado"
     },
 
     {
-        id: 9,
-        name:"Point Reyes Trails",
+        name: Jenny,
+        trails:"Point Reyes Trails",
         location:"San Francisco"
     },
 
     {
-        id: 10,
-        name:"Dark Trails",
+        name: Cathy,
+        trails:"Dark Trails",
         location:"Marin County"
     },
 
