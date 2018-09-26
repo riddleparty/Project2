@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Friend Finder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <style>
+    
+    body { 
+        margin-left: 50px;
+        font-family: sans-serif;
+        background-image: url("images/foggy_trees.jpg");
+        background-attachment: fixed;
+        font-family: 'Merienda' cursive;;
+    }
+    
+    button {
+        background-color: red;
+    }
+
+    </style>
+
+</head>
+
+<body>
+
+   
+
+    
+
+    <div id="container">
+
+        <h3 class="row"><b>Please Choose Which Hike You Would like to Go On</b></h3>
+        
+        <hr/>
+        
+        <h4 class="row">
+            <strong>About You</strong>
+        </h4>
+        
+        <div class="form-group row">
+            <label for="name">Name</label>
+            <input type="name" class="form-control" placeholder="name" id="name" required>
+        </div>
+
+        <div class="form-group row">
+            <label for="age">Age</label>
+            <input type="url" class="form-control" placeholder="age" id="age">
+        </div>
+
+        <div class="form-group row">
+                <label for="gender">Gender</label>
+                <input type="gender" class="form-control" placeholder="name" id="gender" required>
+        </div>
+        
+        <hr/>
+
+        <form>
+            <h4 class="row"><b>Hiking Trails</b></h4>
+
+            <label for="questions" class="row">Which hiking trail do you want to hike?
+            </label>
+                <div class="form-group row">
+                    <div class="col-xs-12">
+                        <select class="select-option" id="question1">
+                            <option selected>Select an Option</option>
+                            <option value="1">Bayview Trailhead</option>
+                            <option value="2">Cascade Falls</option>
+                            <option value="3">Eagle Rock</option>
+                            <option value="4">Tahoe Rim Trail</option>
+                            <option value="5">Tallac Trailhead</option>
+                            <option value="5">Page Meadows</option>
+                        </select>
+                    </div>
+                </div>
+
+                
+        </form>
+        
+        <div class="row">
+                <button type="button" class="btn btn-primary btn-lg btn-block" id="submit">Submit</button>
+        </div>
+        
+        <div id="links">
+
+            <hr/>
+
+            
+        </div>
+    </div>
+
+        
+            <div class="modal" id="resultsModal" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Best Match</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            
+                        </div>
+                        <div class="modal-body">
+                            <h3 id="matchName"></h3>
+                            <img id="matchPicture" src="" alt="">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+<script>
+
+    // Onclick Function to capture the user inputs
+    // $("#submit").on("click", function(event) {
+    //     event.preventDefault();
+
+    // // Need to Validate the Form 
+    // function formValidation() {
+    //     var formValid = true;
+    //     $(".form-control").each(function() {
+    //       if ($(this).val() === "") {
+    //         formValid = false;
+    //       }
+    //     });
+
+    //     $(".select-option").each(function() {
+    //         if ($(this).val() === "") {
+    //         formValid = false;
+    //       }
+    //     });
+    //     return formValid;
+    //   }
+    // //Once valdiated we have to createa an object for new User data
+    //   if (formValidation()) {
+    //       var newUserData = {
+    //         name: $("#name").val(),
+    //         photo: $("#photo").val(),
+    //         scores: [
+    //         $("#question1").val(),
+    //         $("#question12").val(),
+    //         $("#question13").val(),
+    //         $("#question14").val(),
+    //         $("#question15").val(),
+    //         $("#question16").val(),
+    //         $("#question17").val(),
+    //         $("#question18").val(),
+    //         $("#question19").val(),
+    //         $("#question110").val()
+    //       ]
+    //       };
+
+    // // Need to Post data to friends API
+    //     var currentURL = window.location.origin;
+    //         $.post("/api/friends", newUserData, function (data) {
+    //             $("#matchName").text(data.name);
+    //             $("#matchPicture").attr("src", data.photo);
+
+    //             // Show best match on pop up modal
+    //             $("#resultsModal").modal("toggle");
+    //         });
+    //     };
+    // });
+
+
+
+
+
+
+</script>
+    
+
+
+
+
+
+
+
+
+</body>
+</html>
