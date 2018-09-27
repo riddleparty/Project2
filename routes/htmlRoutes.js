@@ -21,6 +21,20 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
+
+  app.get("/calendar", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/calendar.html"));
+  });
+
+  app.get("/photos", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/photos.html"));
+  });
+
+  app.get("/about", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/about.html"));
+  });
+
+
   // var title = "space+jam";
   //   var queryURL = "https://www.omdbapi.com/?t=" + title + "&y=&plot=short&apikey=3b48b07d";
 
