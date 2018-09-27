@@ -64,8 +64,8 @@ position: fixed;
 
 /* changes jumbotron background color */
 .jumbotron {
-  /* background-color:transparent !important; */
-  background: rgba(250, 250, 250, 0.7);
+  background-color:transparent !important;
+  /* background: rgba(250, 250, 250, 0.7); */
   width: auto;
   height: 300px;
   margin-top:75px;
