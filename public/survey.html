@@ -82,7 +82,7 @@
 
         <div class="form-group row">
                 <label for="gender">Gender</label>
-                <input type="gender" class="form-control" placeholder="name" id="gender" required>
+                <input type="gender" class="form-control" placeholder="gender" id="gender" required>
         </div>
         
 
@@ -102,6 +102,9 @@
                             <option value="Tahoe Rim Trail">Tahoe Rim Trail</option>
                             <option value="Tallac Trailhead">Tallac Trailhead</option>
                             <option value="Page Meadows">Page Meadows</option>
+                            <option value="Yosemite Valley Trail">Yosemite Valley Trail</option>
+                            <option value="Point Reyes Trail">Point Reyes Trail</option>
+                            <option value="Yellow Stone Trail">Yellow Stone Trail</option>
                         </select>
                     </div>
                 </div>
@@ -132,8 +135,8 @@
                             
                         </div>
                         <div class="modal-body">
-                            <h3 id="matchName"></h3>
-                            <img id="matchTrail" src="" alt="">
+                            <p>Name:</p><h3 id="matchName"></h3>
+                            <p>Trail:</p><h3 id="matchTrail"></h3>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -167,7 +170,7 @@
                 //alert(data);
 
                 $("#matchName").text(data.name);
-                $("matchTrail").text(data.trailselected);
+                $("#matchTrail").text(data.trails);
                 
                 // Show best match on pop up modal
                 $("#resultsModal").modal("toggle");
@@ -183,12 +186,7 @@
     }); // end of button click
 
     
-
-    
-
-    
-
-     // Need to Validate the Form 
+    // Need to Validate the Form 
      function formValidation() {
 
         var formValid = true;

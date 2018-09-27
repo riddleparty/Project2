@@ -28,6 +28,8 @@ module.exports = function(app) {
         trails: req.body.trails
       }}).then(function(bestMatch) {
         res.json(bestMatch);
+
+          
       }); // get hiker
     }); // create hiker
 
