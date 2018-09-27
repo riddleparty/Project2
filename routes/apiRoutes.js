@@ -28,6 +28,7 @@ module.exports = function(app) {
         trails: req.body.trails
       }}).then(function(bestMatch) {
         res.json(bestMatch);
+        console.log(bestMatch);
         
           
       }); // get hiker

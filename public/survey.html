@@ -136,6 +136,8 @@
                         </div>
                         <div class="modal-body">
                             <p>Name:</p><h3 id="matchName"></h3>
+                            <p>Age:</p><h3 id="matchAge"></h3>
+                            <p>Gender:</p><h3 id="matchGender"></h3>
                             <p>Trail:</p><h3 id="matchTrail"></h3>
                         </div>
 
@@ -176,6 +178,8 @@
                 //alert(data);
 
                 $("#matchName").text(data.name);
+                $("#matchAge").text(data.age);
+                $("#matchGender").text(data.gender);
                 $("#matchTrail").text(data.trails);
                 
                 // Show best match on pop up modal
