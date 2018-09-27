@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Calendar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="code-break-114-246266.png">
+    <link href="https://fonts.googleapis.com/css?family=Merienda" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="../Project2/public/styles/styles.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../Project2/public/styles/calendar.css" />
+    <script src="../calendar.js"></script>
+</head>
+<body>
+        <nav class="navbar sticky-top navbar-dark" style="background-color: #4E6172;">
+                <div class="container-fluid">
+                    <div class="navbar-header sticky-top">
+                        <a class="navbar-brand" href="index.html">Take A Hike.</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Search</a>
+                        </li>
+                        <li>
+                            <a href="#">Messages</a>
+                        </li>
+                        <li>
+                            <a href="../calendar.html">Calendar</a>
+                        </li>
+                        <li>
+                            <a href="#">My Places</a>
+                        </li>
+                        <li>
+                            <a href="#">Photos</a>
+                        </li>
+                        <li>
+                            <a href="#">About</a>
+                        </li>
+                        <li>
+                            <form class="navbar-form" role="search">
+                            <div class="input-group">
+                                <input class="form-control form-control-lg form-control-borderless" type="text" class="input-small" placeholder="Search for that perfect quiet place"
+                                    name="srch-term" id="srch-term">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default" type="submit">
+                                        <i class="glyphicon glyphicon-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        </li>
+                        <li>
+                            <a href="/login">Login/Sign Up</a>
+                        </li>
+                        
+                    </ul>
+                    
+                </div>
+            </nav>
+    <div id="cal"> 
+        <div class="header"> 
+            <span class="left button" id="prev"> &lang; </span> 
+            <span class="left hook"></span> 
+            <span class="month-year" id="label"> September 2018 </span> 
+            <span class="right hook"></span> 
+            <span class="right button" id="next"> &rang; </span>
+        </div> 
+        <table id="days"> 
+            <td>sun</td> 
+            <td>mon</td> 
+            <td>tue</td> 
+            <td>wed</td> 
+            <td>thu</td> 
+            <td>fri</td> 
+            <td>sat</td>
+     
+        </table> 
+        <div id="cal-frame"> 
+            <table class="curr"> 
+                <tbody> 
+                    <tr><td class="nil"></td><td class="nil"></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr> 
+                    <tr><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td class="today">11</td><td>12</td></tr> 
+                    <tr><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td></tr> 
+                    <tr><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td></tr> 
+                    <tr><td>27</td><td>28</td><td>29</td><td>30</td><td class="nil"></td><td class="nil"></td><td class="nil"></td></tr> 
+                </tbody> 
+            </table>
+     
+        </div> 
+    </div> 
+</body>
+</html>
