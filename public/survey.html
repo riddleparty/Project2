@@ -146,7 +146,7 @@
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" onclick="window.location.reload();">Close</button>
                         </div>
                     </div>
                 </div>
@@ -181,6 +181,7 @@
                 $("#matchAge").text(data.age);
                 $("#matchGender").text(data.gender);
                 $("#matchTrail").text(data.trails);
+                
                 
                 // Show best match on pop up modal
                 $("#resultsModal").modal("toggle");
